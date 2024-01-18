@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-    <title>Thymeleaf Examplee</title>
+    <script src="http://localhost:35729/livereload.js?snipver=1"></script> <!-- vscode extension: LiveReload -->
+    <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+    <title>FilmBox</title>
 </head>
 <body>
-    <h1 th:text="'Hellaslo, ' + ${name} + '!'"></h1>
+    <div hx-get="/api/sample/Lukas" hx-trigger="load"></div>
 </body>
 </html>
