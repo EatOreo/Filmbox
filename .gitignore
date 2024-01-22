@@ -187,3 +187,4 @@ hs_err_pid*
 replay_pid*
 filmbox/.DS_Store
 *.webm
+.vscode
