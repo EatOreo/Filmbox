@@ -1,0 +1,7 @@
+<section layout:decorate="~{layout.html}" layout:fragment="content">
+    <div class="grid" x-data="{hover: false}">
+        <video :width="window.innerWidth - 320" :height="(window.innerWidth - 320) * 0.43" poster="dbhPoster1.png" style="background-color: black;" @mouseover="hover = true" @mouseover.away="hover = false" :controls="hover">
+            <source src="dbh.webm">
+        </video>
+    </div>
+</section>
