@@ -7,3 +7,4 @@ module.exports = {
   plugins: [],
 }
 
+// npx tailwindcss -i filmbox/src/main/resources/static/input.css -o filmbox/src/main/resources/static/output.css --watch

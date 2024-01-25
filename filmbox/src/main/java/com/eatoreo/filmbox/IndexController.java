@@ -1,7 +1,6 @@
 package com.eatoreo.filmbox;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,14 +17,6 @@ public class IndexController {
     @GetMapping("/detbankendehjerte")
     public ModelAndView getMethodName() {
         var m = new ModelAndView("filminfo");
-        return m;
-    }
-    
-
-    @GetMapping("/api/sample/{name}")
-    public ModelAndView getSamplePage(@PathVariable String name) {
-        var m = new ModelAndView("sample");
-        m.addObject("name", name);
         return m;
     }
 }
