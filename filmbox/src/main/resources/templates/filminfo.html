@@ -1,10 +1,12 @@
 <section layout:decorate="~{layout.html}" layout:fragment="content">
     <div x-data="{hover: false}">
-        <!-- <iframe width="540" height="310"
-            src="media/dbh">
-        </iframe> -->
-        <video :width="window.innerWidth - 320" :height="(window.innerWidth - 320) * 0.43" poster="dbhPoster1.png" style="background-color: black;" @mouseover="hover = true" @mouseover.away="hover = false" :controls="hover">
-            <source src="dbh.webm">
+        <video class="aspect-film bg-black" poster="dbh/poster1.png" @mouseover="hover = true" @mouseover.away="hover = false" :controls="hover">
+            <source src="dbh/film.webm">
         </video>
+    </div>
+
+    <div class="py-2 text-center">
+        <h2 class="text-yellow-600 drop-shadow-[0_2.2px_2.2px_rgba(0,0,0,0.8)] font-semibold text-7xl"> Det Bankende Hjerte</h2>
+        <p>En sindssyg spændende action thriller</p>
     </div>
 </section>

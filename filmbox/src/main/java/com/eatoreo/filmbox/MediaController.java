@@ -25,7 +25,7 @@ public class MediaController {
         try
         {
             StreamingResponseBody responseStream;
-            String filePathString = "/Users/lukas/Documents/CodeProjects/Filmbox/filmbox/src/main/resources/static/dbh.webm";
+            String filePathString = "/Users/lukas/Documents/CodeProjects/Filmbox/filmbox/src/main/resources/static/dbh/film.webm";
             Path filePath = Paths.get(filePathString);
             Long fileSize = Files.size(filePath);
             byte[] buffer = new byte[1024];      

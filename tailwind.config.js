@@ -1,10 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["filmbox/src/main/resources/templates/*.{html,js}"],
+  darkMode: "class",
+  content: ["filmbox/src/main/resources/templates/*.{html,js}", "filmbox/src/main/resources/static/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      aspectRatio: {
+        'film': '23 / 9',
+      },
+    },
   },
   plugins: [],
 }
 
-// npx tailwindcss -i filmbox/src/main/resources/static/input.css -o filmbox/src/main/resources/static/output.css --watch
+// npx tailwindcss -i input.css -o filmbox/src/main/resources/static/output.css --watch
