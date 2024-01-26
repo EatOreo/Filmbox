@@ -53,6 +53,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>filmbox</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
