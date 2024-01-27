@@ -58,7 +58,7 @@ jobs:
     - name: redeploy jar on server
       run: >
         ssh -i ~/.ssh/server.key -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST
-        'bash -s' < .github/remote.sh
+        'bash -s' < .github/deploy.sh
       env:
         SSH_USER: ${{ secrets.SSH_USER }}
         SSH_HOST: ${{ secrets.SSH_HOST }}
