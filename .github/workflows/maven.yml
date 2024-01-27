@@ -42,7 +42,7 @@ jobs:
           
     - name: upload jar to server
       run: >
-          scp -i ~/.ssh/secret.key -o StrictHostKeyChecking=no
+          scp -i ~/.ssh/server.key -o StrictHostKeyChecking=no
           filmbox/target/filmbox.jar $SSH_USER@$SSH_HOST:~
       env:
           SSH_USER: ${{ secrets.SSH_USER }}
