@@ -14,10 +14,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 public class MediaController {
+    @GetMapping("/api/filmcard")
+    public ModelAndView getMethodName() {
+        var m = new ModelAndView("filmcard");
+        return m;
+    }
+    
+
     @GetMapping(value = "/media/dbh")
     @ResponseBody
     public ResponseEntity<StreamingResponseBody> playMediaV01(@RequestHeader(value = "Range", required = false) String rangeHeader)
