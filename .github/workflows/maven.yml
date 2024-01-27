@@ -20,6 +20,13 @@ jobs:
       run: |
         npm install tailwindcss
         npx tailwindcss -i input.css -o filmbox/src/main/resources/static/output.css
+
+    - name: Setup Python
+      uses: actions/setup-python@v5.0.0
+    - name: get films
+      run: |
+        pip install -r scripts/requirements.txt
+        python scripts/GetFilms.py
         
     - name: Set up JDK 21
       uses: actions/setup-java@v3
