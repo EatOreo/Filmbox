@@ -208,3 +208,4 @@ buildNumber.properties
 .classpath
 *.png
 *.gif
+output.css

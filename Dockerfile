@@ -1,14 +1,23 @@
+FROM node:21 AS style
+WORKDIR /style
+COPY ["filmbox/src/main/resources/", "filmbox/src/main/resources/"]
+COPY ["tailwind.config.js", "."]
+COPY ["input.css", "."]
+RUN npm install tailwindcss
+RUN npx tailwindcss -i input.css -o output.css
+
 FROM python:3 AS films
 WORKDIR /drive
+COPY ["scripts/requirements.txt", "requirements.txt"]
 COPY ["scripts/GetFilms.py", "GetFilms.py"]
 COPY ["filmbox/src/main/resources/static/films", "filmbox/src/main/resources/static/films"]
-RUN pip install checksumdir
-RUN pip install gdown
+RUN pip install -r requirements.txt
 RUN python GetFilms.py
 
 FROM eclipse-temurin:21-jdk AS build
 WORKDIR /src
 COPY ["filmbox/", "filmbox/"]
+COPY --from=style /style/output.css filmbox/src/main/resources/static/output.css
 COPY --from=films /drive/filmbox/src/main/resources/static/films filmbox/src/main/resources/static/films
 WORKDIR "/src/filmbox"
 RUN ./mvnw install
