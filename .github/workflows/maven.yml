@@ -1,4 +1,4 @@
-name: Java CD
+name: Java CI/CD
 
 on:
 #  push:
@@ -54,3 +54,8 @@ jobs:
       env:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
+
+    - name: redeploy jar on server
+      run: >
+        ssh -i ~/.ssh/server.key -o StrictHostKeyChecking=no
+        'bash -s' < .github/remote.sh
