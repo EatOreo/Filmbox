@@ -26,9 +26,10 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        cache: maven
     - name: Build with Maven
-      run: filmbox/mvnw install
+      run: |
+          cd filmbox
+          ./mvnw install
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: configure ssh
