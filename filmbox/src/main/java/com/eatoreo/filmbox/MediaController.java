@@ -16,17 +16,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
 public class MediaController {
     @GetMapping("/api/filmcard")
     public ModelAndView getMethodName() {
-        var m = new ModelAndView("filmcard");
+        var m = new ModelAndView("api/filmcard");
         return m;
     }
-    
 
     @GetMapping(value = "/media/dbh")
     @ResponseBody
