@@ -38,7 +38,6 @@ jobs:
           cd filmbox
           ./mvnw install
 
-    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: configure ssh
       run: |
           mkdir -p ~/.ssh/
