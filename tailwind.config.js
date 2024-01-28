@@ -4,7 +4,7 @@ module.exports = {
   content: [
     "filmbox/src/main/resources/templates/*.{html,js}", 
     "filmbox/src/main/resources/templates/api/*.{html,js}",
-    "filmbox/src/main/resources/films.json",
+    "filmbox/src/main/resources/data/films.json",
     "filmbox/src/main/resources/static/*.{html,js}",
   ],
   theme: {
