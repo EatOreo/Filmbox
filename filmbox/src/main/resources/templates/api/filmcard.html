@@ -1,11 +1,11 @@
 <div class="relative #fade-in.htmx-added" x-data="{loaded: false, hover: false}" @mouseover="hover = true" @mouseover.away="hover = false">
-    <a hx-boost href="/detbankendehjerte">
+    <a hx-boost th:href="@{${'/' + name}}">
         <div x-cloak :class="loaded ? 'opacity-1' : 'opacity-0'" class="transition-opacity duration-500 ease-in-out">
-            <img @load="loaded = true" class="rounded-md" src="films/dbh/poster2.png" x-show="! hover"/>
-            <img class="rounded-md" src="films/dbh/preview2.gif" x-show="hover"/>
+            <img @load="loaded = true" class="rounded-md" th:src="@{${'films/' + name + '/' + poster}}" x-show="! hover"/>
+            <img class="rounded-md" th:src="@{${'films/' + name + '/' + preview}}" x-show="hover"/>
             <div class="text-center absolute bottom-8 px-4 py-3 w-full">
-                <h2 class="ease-[cubic-bezier(0.95,0.05,1,1) text-red-600 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-semibold text-5xl transform transition duration-1000"
-                :class="hover ? 'scale-[102%] -translate-y-1' : 'scale-100'"> Det Bankende Hjerte </h2>
+                <h2 th:class="${titleclasses + ' ease-[cubic-bezier(0.95,0.05,1,1) transform transition duration-1000'}"
+                :class="hover ? 'scale-[102%] -translate-y-1' : 'scale-100'" th:text="${title}"> </h2>
             </div>
         </div>
     </a>

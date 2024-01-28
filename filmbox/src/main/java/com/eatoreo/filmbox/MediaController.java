@@ -1,28 +1,66 @@
 package com.eatoreo.filmbox;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 @RestController
 public class MediaController {
-    @GetMapping("/api/filmcard")
-    public ModelAndView getMethodName() {
+
+    private final ResourceLoader resourceLoader;
+    public MediaController(ResourceLoader resourceLoader) {
+        this.resourceLoader = resourceLoader;
+    }
+
+    @GetMapping("/api/filmcard/{name}")
+    public ModelAndView getMethodName(@PathVariable String name) {
         var m = new ModelAndView("api/filmcard");
+
+        
+        //TODO: move this out of controller vvv
+        try {
+            var jsonFile = resourceLoader.getResource("classpath:films.json").getFile();
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(jsonFile);
+            var filmNode = rootNode.get(name);
+            List<JsonNode> posterList = new ArrayList<JsonNode>();
+            filmNode.get("posters").elements().forEachRemaining(posterList::add);
+            Random rand = new Random();
+            var posterNode = posterList.get(rand.nextInt(posterList.size()));
+            
+            m.addObject("name", name);
+            m.addObject("title", filmNode.get("title").asText());
+            m.addObject("poster", posterNode.get("filename").asText());
+            m.addObject("preview", posterNode.get("preview").asText());
+            m.addObject("titleclasses", posterNode.get("titleclasses").asText());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return m;
     }
 

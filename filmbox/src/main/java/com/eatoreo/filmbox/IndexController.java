@@ -14,7 +14,7 @@ public class IndexController {
         return m;
     }
 
-    @GetMapping("/detbankendehjerte")
+    @GetMapping("/dbh")
     public ModelAndView getMethodName() {
         var m = new ModelAndView("filminfo");
         return m;

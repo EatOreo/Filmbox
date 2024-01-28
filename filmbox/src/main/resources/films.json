@@ -1,0 +1,29 @@
+{
+    "dbh": {
+        "title": "Det Bankende Hjerte",
+        "filename": "film.webm",
+        "posters": [
+            {
+                "filename": "poster1.png",
+                "preview": "preview1.gif",
+                "titleclasses": "text-yellow-600 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-semibold text-5xl"
+            },
+            {
+                "filename": "poster2.png",
+                "preview": "preview2.gif",
+                "titleclasses": "text-red-600 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-semibold text-5xl"
+            }
+        ]
+    },
+    "bigbunny": {
+        "title": "Big Buck Bunny",
+        "filename": "BigBuckBunny_320x180.mp4",
+        "posters": [
+            {
+                "filename": "poster1.webp",
+                "preview": "BigBuckBunny.gif",
+                "titleclasses": "text-green-600 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-semibold text-5xl"
+            }
+        ]
+    }
+}

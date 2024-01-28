@@ -209,3 +209,5 @@ buildNumber.properties
 *.png
 *.gif
 output.css
+*.mp4
+*.webp
