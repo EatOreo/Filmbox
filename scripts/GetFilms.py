@@ -4,7 +4,7 @@ import shutil
 import os
 
 staticpath = './filmbox/src/main/resources/static'
-md5remote = "a96fb3a15aa2e9b8e84c6fbe44c5ee2f" #TO UPDATE: checksumdir ./filmbox/src/main/resources/static/films
+md5remote = "7e62a8a8789730536fcc2276e58b58d9" #TO UPDATE: checksumdir ./filmbox/src/main/resources/static/films
 md5hash = dirhash(staticpath + '/films', 'md5')
 url = "https://drive.google.com/drive/folders/1k5xysbb2GkzPil970SSmCxl8CRJ1ljsD"
 
