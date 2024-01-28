@@ -1,6 +1,5 @@
 package com.eatoreo.filmbox;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -11,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.ResourceLoader;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,10 +30,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 public class MediaController {
 
-    private final ResourceLoader resourceLoader;
-    public MediaController(ResourceLoader resourceLoader) {
-        this.resourceLoader = resourceLoader;
-    }
+    @Value("classpath:data/films.json")
+    Resource filmsResourceFile;
 
     @GetMapping("/api/filmcard/{name}")
     public ModelAndView getMethodName(@PathVariable String name) {
@@ -43,7 +40,7 @@ public class MediaController {
         
         //TODO: move this out of controller vvv
         try {
-            var jsonFile = resourceLoader.getResource("classpath:films.json").getFile();
+            var jsonFile = filmsResourceFile.getInputStream();
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(jsonFile);
             var filmNode = rootNode.get(name);
@@ -58,7 +55,7 @@ public class MediaController {
             m.addObject("preview", posterNode.get("preview").asText());
             m.addObject("titleclasses", posterNode.get("titleclasses").asText());
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();    
         }
 
         return m;
