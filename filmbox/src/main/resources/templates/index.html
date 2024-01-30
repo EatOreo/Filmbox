@@ -1,8 +1,7 @@
 <section layout:decorate="~{layout.html}" layout:fragment="content">
     <div class="content-stretch grid grid-cols-2 gap-16 p-16">
-        <div hx-trigger="load" hx-swap="outerHTML" hx-get="api/filmcard/dbh"> </div>
-        <div hx-trigger="load" hx-swap="outerHTML" hx-get="api/filmcard/bigbunny"> </div>
-        <div hx-trigger="load" hx-swap="outerHTML" hx-get="api/filmcard/dbh"> </div>
-        <div hx-trigger="load" hx-swap="outerHTML" hx-get="api/filmcard/dbh"> </div>
+        <th:block th:each="filmname : ${filmnames}">
+            <div hx-trigger="load" hx-swap="outerHTML" th:attr="hx-get='api/filmcard/' + ${filmname}"> </div>
+        </th:block>
     </div>
 </section>
