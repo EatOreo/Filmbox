@@ -45,8 +45,16 @@ jobs:
           chmod 600 ~/.ssh/server.key
       env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
+
+    - name: kill jar process on server
+      run: >
+        ssh -i ~/.ssh/server.key -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST
+        'kill $(lsof -ti :8080)'
+      env:
+        SSH_USER: ${{ secrets.SSH_USER }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
           
-    - name: upload jar to server
+    - name: upload new jar to server
       run: >
           scp -i ~/.ssh/server.key -o StrictHostKeyChecking=no
           filmbox/target/filmbox.jar $SSH_USER@$SSH_HOST:~
@@ -57,7 +65,7 @@ jobs:
     - name: redeploy jar on server
       run: >
         ssh -i ~/.ssh/server.key -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST
-        'bash -s' < .github/deploy.sh
+        'nohup java -jar filmbox.jar > log.log 2>&1 &'
       env:
         SSH_USER: ${{ secrets.SSH_USER }}
         SSH_HOST: ${{ secrets.SSH_HOST }}
