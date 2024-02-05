@@ -1,6 +1,6 @@
 <section layout:decorate="~{layout.html}" layout:fragment="content">
     <div x-data="{hover: false}">
-        <video class="aspect-film bg-black" poster="films/dbh/poster1.png" @mouseover="hover = true" @mouseover.away="hover = false" :controls="hover">
+        <video class="aspect-film bg-black" poster="films/dbh/poster1.png" @mousemove="hover = true" @mousemove.debounce.1500ms="hover = false" :controls="hover">
             <source src="films/dbh/film.webm">
         </video>
     </div>
