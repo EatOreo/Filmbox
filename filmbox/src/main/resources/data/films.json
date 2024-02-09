@@ -4,12 +4,12 @@
         "filename": "film.webm",
         "posters": [
             {
-                "filename": "poster1.png",
+                "filename": "poster1.webp",
                 "preview": "preview1.gif",
                 "titleclasses": "text-yellow-600 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-semibold text-5xl"
             },
             {
-                "filename": "poster2.png",
+                "filename": "poster2.webp",
                 "preview": "preview2.gif",
                 "titleclasses": "text-red-600 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-semibold text-5xl"
             }
