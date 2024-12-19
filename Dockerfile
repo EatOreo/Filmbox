@@ -7,6 +7,7 @@ RUN npm install tailwindcss
 RUN npx tailwindcss -i input.css -o output.css
 
 FROM python:3 AS films
+RUN pip install --upgrade setuptools
 WORKDIR /drive
 COPY ["scripts/requirements.txt", "requirements.txt"]
 COPY ["scripts/GetFilms.py", "GetFilms.py"]
